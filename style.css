@@ -18,10 +18,20 @@ footer {
 }
 
 .hero {
-    text-align: center;
     background-color: blueviolet;
     color: white;
     padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-hero {
+    background-color: orangered;
+    width: fit-content;
+    border: none;
+    border-radius: 12px;
+    padding: 16px;
 }
 
 .characters {
@@ -111,4 +121,26 @@ footer {
 
 .grid-spacer {
     grid-column: 3;
+}
+
+.contact {
+    background-color: red;
+    color: white;
+    padding: 24px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+.form-fields input {
+    flex: 1;
+    /* O input cresce para ocupar o espaço disponível */
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
 }
