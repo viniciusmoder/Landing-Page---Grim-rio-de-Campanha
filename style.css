@@ -1,0 +1,114 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+header {
+    text-align: center;
+    margin: 24px 0;
+}
+
+footer {
+    background-color: black;
+    color: white;
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    text-align: center;
+}
+
+.hero {
+    text-align: center;
+    background-color: blueviolet;
+    color: white;
+    padding: 24px;
+}
+
+.characters {
+    background-color: goldenrod;
+    padding: 24px;
+}
+
+.search {
+    padding: 24px 0;
+    background-color: green;
+    color: white;
+    text-align: center;
+}
+
+.search h2 {
+    margin-bottom: 24px;
+}
+
+.search-area {
+    display: grid;
+    grid-template-columns: 150px 1fr 150px;
+    align-items: center;
+}
+
+.search-option {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.btn-option {
+    width: 80%;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 0 8px 8px 0;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: right;
+    transition: background-color 0.2s;
+}
+
+.search-bar {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.search-bar label {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.input-container {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    max-width: 400px;
+    /* Impede que a barra fique excessivamente larga */
+}
+
+.input-container input {
+    flex: 1;
+    /* O input cresce para ocupar o espaço disponível */
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.input-container button {
+    padding: 10px 16px;
+    border: none;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.input-container button:hover {
+    background-color: #222;
+}
+
+.grid-spacer {
+    grid-column: 3;
+}
