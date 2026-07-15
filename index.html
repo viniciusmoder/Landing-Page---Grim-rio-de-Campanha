@@ -1,43 +1,66 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grimório de Campanha</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <header>
-        <h2>GRIMÓRIO DE CAMPANHA</h2>
+        <nav class="navbar">
+            <a href="#grimorio">GRIMÓRIO DE CAMPANHA</a>
+            <a href="herois">HERÓIS</a>
+            <a href="pesquisa">PESQUISA</a>
+            <a href="#contato">CONTATO</a>
+        </nav>
     </header>
 
     <main>
-        <section class="hero">
-            <h1>Bem-vindo ao acervo de pesquisa dos Marcados!</h1>
-            <h2>Prepare seus dados!</h2>
-            <button class="btn-hero">Ingresse nessa Jornada</button>
+        <section class="hero" id="#grimorio">
+            <div clas="hero-content">
+                <h1>Bem-vindo ao acervo de pesquisa dos Marcados!</h1>
+                <p class="hero-subtitle">Preparem seus dados!</p>
+                <button class="btn-hero">Ingressar na Jornada</button>
+            </div>
+
+            <div class="hero-art">
+                <div class="placeholder-imagem">🔮</div>
+            </div>
         </section>
 
-        <section class="characters">
-            <p>Conheça nossos heróis:</p>
+        <hr class="line">
+
+        <section class="characters" id="#herois">
+            <h2>Conheça nossos heróis</h2>
+            <p>O carrossel será invocado aqui...</p>
         </section>
 
-        <section class="search">
-            <h2>Consulte os pergaminhos:</h2>
-            
+        <hr class="line">
+
+        <section class="search" id="#pesquisa">
+            <h2>Consulte os pergaminhos</h2>
+
             <div class="search-area">
                 <aside class="search-option">
-                    <button class="btn-option">Classes</button>
-                    <button class="btn-option">Espécies</button>
-                    <button class="btn-option active">Magias</button>
-                    <button class="btn-option">Criaturas</button>
-                    <button class="btn-option">Itens</button>
+                    <button class="btn-option color-classes">Classes</button>
+                    <button class="btn-option color-especies">Espécies</button>
+                    <button class="btn-option color-magias active">Magias</button>
+                    <button class="btn-option color-criaturas">Criaturas</button>
+                    <button class="btn-option color-itens">Itens</button>
                 </aside>
 
                 <div class="search-bar">
-                    <label for="search-field">O que você procura?</label>
+                    <label for="search-field">O que você procura nos arquivos?</label>
                     <div class="input-container">
                         <input type="text" id="search-field" placeholder="Ex: fireball...">
                         <button id="btn-search">Buscar</button>
@@ -50,25 +73,31 @@
 
         <div id="result"></div>
 
-        <section class="contact">
-            <p>Preencha o pergaminho para enviaro ao DM:</p>
-            <div class="form">
+        <hr class="line">
+
+        <section class="contact" id="contato">
+            <h2>Mande um recado ao DM</h2>
+            <p>Preencha o pergaminho para enviá-lo ao Mestre:</p>
+
+            <form class="form">
                 <div class="form-fields">
-                    <label for="name">Nome</label>            
+                    <label for="name">Nome do Aventureiro</label>
                     <input type="text" id="name" placeholder="Como você quer ser chamado...">
                 </div>
                 <div class="form-fields">
-                    <label for="email">E-mail</label>
-                    <input type="text" id="email" placeholder="Seu e-mail...">
+                    <label for="email">Correio Mágico (E-mail)</label>
+                    <input type="email" id="email" placeholder="Seu e-mail...">
                 </div>
                 <div class="form-fields">
-                    <label for="message">Mensagem</label>
-                    <textarea type="text" id="message" placeholder="Conte-nos sua experiência com RPG..."></textarea>
+                    <label for="message">Sua Mensagem</label>
+                    <textarea id="message" rows="4" placeholder="Conte-nos sua experiência com RPG..."></textarea>
                 </div>
-            </div>
-
+                <button type="submit" class="btn-submit">Enviar Pergaminho</button>
+            </form>
         </section>
     </main>
+
+        <hr class="line">
 
     <footer>
         <p>RPG Marcados - desde 2023</p>
@@ -78,4 +107,5 @@
     </footer>
 
 </body>
+
 </html>

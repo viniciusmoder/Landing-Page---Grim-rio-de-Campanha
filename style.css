@@ -1,53 +1,147 @@
+/* --- RESET E VARIÁVEIS --- */
+:root {
+    --text-light: #f4eacc;
+    /* Cor de pergaminho claro para textos */
+    --gold: #d4af37;
+    --dark-bg: #111111;
+}
+
 body {
     margin: 0;
-    font-family: sans-serif;
+    font-family: 'Lora', serif;
+    /* Fonte de leitura */
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+}
+
+/* Fontes de Títulos e Botões */
+h1,
+h2,
+h3,
+header,
+button {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1px;
 }
 
 header {
-    text-align: center;
-    margin: 24px 0;
-}
-
-footer {
-    background-color: black;
-    color: white;
-    padding: 24px;
-    display: grid;
-    grid-template-columns: 50% 50%;
-    text-align: center;
-}
-
-.hero {
-    background-color: blueviolet;
-    color: white;
-    padding: 24px;
     display: flex;
-    flex-direction: column;
+    padding: 24px 0;
+    background-color: #0a0a0a;
+    border-bottom: 2px solid var(--gold);
+    margin: 0;
     align-items: center;
 }
 
-.btn-hero {
-    background-color: orangered;
-    width: fit-content;
+header a {
+    color: var(--gold);
+    margin: 0;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+
+.line {
     border: none;
-    border-radius: 12px;
-    padding: 16px;
+    /* Remove a linha cinza padrão e feia do navegador */
+    height: 2px;
+    /* Cria uma linha dourada que "desaparece" nas pontas (transparente -> dourado -> transparente) */
+    background: linear-gradient(to right, transparent, var(--gold, #d4af37), transparent);
+    margin: 60px auto;
+    /* Dá um respiro grande em cima/baixo e centraliza */
+    width: 80%;
+    /* A linha não encosta nas bordas da tela */
+    position: relative;
+    /* Necessário para posicionar o losango no centro absoluto */
+    overflow: visible;
+    /* Permite que o losango "vaze" para fora da linha se for maior que 2px */
 }
 
-.characters {
-    background-color: goldenrod;
-    padding: 24px;
+/* --- HERO SECTION --- */
+.hero {
+    background: linear-gradient(135deg, #2c1b4d 0%, #140c24 100%);
+    padding: 80px 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.search {
-    padding: 24px 0;
-    background-color: green;
+.hero-content {
+    flex: 1;
+    max-width: 50%;
+    text-align: left;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: #a9a9a9;
+    margin-bottom: 32px;
+    line-height: 1.6;
+}
+
+.hero-art {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    font-size: 100px;
+    /* Temporário para o emoji da bola de cristal */
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.hero p {
+    color: var(--gold);
+    margin-bottom: 30px;
+}
+
+.btn-hero {
+    background-color: #b82e1f;
+    /* Vermelho épico */
     color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: 2px solid #8a2015;
+    border-radius: 8px;
+    padding: 16px 32px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.btn-hero:hover {
+    background-color: #d13a29;
+    transform: translateY(-3px);
+}
+
+/* --- CHARACTERS SECTION --- */
+.characters {
+    background: linear-gradient(to right, #2c2114, #3e2e1e);
+    padding: 60px 24px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.characters h2 {
+    color: var(--gold);
+}
+
+/* --- SEARCH SECTION --- */
+.search {
+    padding: 60px 0;
+    background: linear-gradient(135deg, #0f2e20 0%, #06140e 100%);
+    /* Verde místico */
     text-align: center;
 }
 
 .search h2 {
-    margin-bottom: 24px;
+    color: var(--gold);
+    margin-bottom: 40px;
 }
 
 .search-area {
@@ -59,20 +153,62 @@ footer {
 .search-option {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
+    /* Mais respiro entre botões */
 }
 
+/* Botões coloridos individuais */
 .btn-option {
-    width: 80%;
-    padding: 12px 20px;
+    width: 90%;
+    padding: 14px 20px;
     border: none;
-    border-radius: 0 8px 8px 0;
-    background-color: black;
+    border-radius: 0 12px 12px 0;
+    /* Arredondamento suave */
     color: white;
+    font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
-    text-align: right;
-    transition: background-color 0.2s;
+    text-align: left;
+    /* Texto alinhado à esquerda na aba fica mais elegante */
+    transition: all 0.3s ease;
+    opacity: 0.7;
+    /* Opacos quando não ativos */
+}
+
+/* Cores por categoria */
+.color-classes {
+    background-color: #8b0000;
+}
+
+/* Guerreiro Vermelho */
+.color-especies {
+    background-color: #228b22;
+}
+
+/* Natureza Verde */
+.color-magias {
+    background-color: #4b0082;
+}
+
+/* Arcano Índigo */
+.color-criaturas {
+    background-color: #d2691e;
+}
+
+/* Monstro Laranja */
+.color-itens {
+    background-color: #b8860b;
+}
+
+/* Tesouro Ouro */
+
+.btn-option:hover,
+.btn-option.active {
+    width: 100%;
+    /* O botão expande um pouco ao passar o mouse */
+    opacity: 1;
+    /* Fica com cor viva */
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .search-bar {
@@ -80,67 +216,167 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 16px;
 }
 
 .search-bar label {
-    font-size: 1.1rem;
-    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 .input-container {
     display: flex;
-    gap: 8px;
     width: 100%;
-    max-width: 400px;
-    /* Impede que a barra fique excessivamente larga */
+    max-width: 500px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    overflow: hidden;
+    /* Mantém os cantos arredondados contendo os filhos */
 }
 
 .input-container input {
     flex: 1;
-    /* O input cresce para ocupar o espaço disponível */
-    padding: 10px;
+    padding: 16px;
     border: none;
-    border-radius: 4px;
-    font-size: 1rem;
+    font-size: 1.1rem;
+    font-family: 'Lora', serif;
+    background-color: #f4eacc;
+    /* Fundo cor de pergaminho */
+    color: #111;
+}
+
+.input-container input:focus {
+    outline: none;
+    background-color: #ffffff;
 }
 
 .input-container button {
-    padding: 10px 16px;
+    padding: 16px 24px;
     border: none;
-    background-color: black;
-    color: white;
+    background-color: var(--gold);
+    color: #111;
+    font-size: 1.1rem;
     font-weight: bold;
-    border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.2s;
 }
 
 .input-container button:hover {
-    background-color: #222;
+    background-color: #f2ce5c;
 }
 
 .grid-spacer {
     grid-column: 3;
 }
 
+/* --- CONTACT SECTION (FORMULÁRIO) --- */
 .contact {
-    background-color: red;
-    color: white;
-    padding: 24px;
+    background: linear-gradient(135deg, #4a1515 0%, #220808 100%);
+    /* Vermelho escuro/taverna */
+    padding: 60px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
+.contact h2 {
+    color: var(--gold);
+    margin-bottom: 10px;
+}
+
+.contact p {
+    margin-bottom: 30px;
+}
+
+/* Estilização focada em UX */
 .form {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 450px;
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Caixa de fundo translúcida */
+    padding: 32px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.form-fields input {
-    flex: 1;
-    /* O input cresce para ocupar o espaço disponível */
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
+.form-fields {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* Alinha Label e Input à esquerda */
+    gap: 8px;
+    width: 100%;
+}
+
+.form-fields label {
+    font-weight: bold;
+    font-size: 0.95rem;
+    color: var(--text-light);
+}
+
+.form-fields input,
+.form-fields textarea {
+    width: 100%;
+    box-sizing: border-box;
+    /* Impede que o input vaze a div */
+    padding: 14px;
+    border: 2px solid #333;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.9);
+    font-family: 'Lora', serif;
     font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-fields input:focus,
+.form-fields textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    /* Destaca o campo em uso */
+}
+
+.form-fields textarea {
+    resize: vertical;
+    /* Permite aumentar apenas a altura do campo */
+}
+
+.btn-submit {
+    margin-top: 10px;
+    background-color: var(--gold);
+    color: #111;
+    border: none;
+    padding: 16px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn-submit:hover {
+    background-color: #f2ce5c;
+    transform: scale(1.02);
+}
+
+/* --- FOOTER --- */
+footer {
+    background-color: #050505;
+    padding: 40px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    text-align: center;
+    border-top: 2px solid #222;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.navbar {
+    display: flex;
+    gap: 120px;
+    align-items: center;
+    margin: auto;
 }
