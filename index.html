@@ -13,57 +13,60 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 
 <body>
     <header>
         <nav class="navbar">
             <a href="#grimorio">GRIMÓRIO DE CAMPANHA</a>
-            <a href="herois">HERÓIS</a>
-            <a href="pesquisa">PESQUISA</a>
+            <a href="#herois">HERÓIS</a>
+            <a href="#pesquisa">PESQUISA</a>
             <a href="#contato">CONTATO</a>
         </nav>
     </header>
 
     <main>
-        <section class="hero" id="#grimorio">
-            <div clas="hero-content">
+        <section class="hero" id="grimorio">
+            <div class="hero-content">
                 <h1>Bem-vindo ao acervo de pesquisa dos Marcados!</h1>
                 <p class="hero-subtitle">Preparem seus dados!</p>
                 <button class="btn-hero">Ingressar na Jornada</button>
             </div>
-
+        
             <div class="hero-art">
-                <div class="placeholder-imagem">🔮</div>
+                <div class="placeholder-imagem">
+                    <img src="assets/hero.png" alt="Mascotes dos Marcados">
+                </div>
             </div>
         </section>
 
         <hr class="line">
 
-        <section class="characters" id="#herois">
+        <section class="characters" id="herois">
             <h2>Conheça nossos heróis</h2>
             <p>O carrossel será invocado aqui...</p>
         </section>
 
         <hr class="line">
 
-        <section class="search" id="#pesquisa">
+        <section class="search" id="pesquisa">
             <h2>Consulte os pergaminhos</h2>
 
             <div class="search-area">
                 <aside class="search-option">
-                    <button class="btn-option color-classes">Classes</button>
-                    <button class="btn-option color-especies">Espécies</button>
-                    <button class="btn-option color-magias active">Magias</button>
-                    <button class="btn-option color-criaturas">Criaturas</button>
-                    <button class="btn-option color-itens">Itens</button>
+                    <button class="btn-option color-classes active" data-endpoint="classes" data-placeholder="Ex: wizard...">Classes</button>
+                    <button class="btn-option color-especies" data-endpoint="races" data-placeholder="Ex: human...">Espécies</button>
+                    <button class="btn-option color-magias" data-endpoint="spells" data-placeholder="Ex: fire bolt...">Magias</button>
+                    <button class="btn-option color-criaturas" data-endpoint="monsters" data-placeholder="Ex: ogre...">Criaturas</button>
+                    <button class="btn-option color-itens" data-endpoint="equipment" data-placeholder="Ex: plate armor...">Itens</button>
                 </aside>
 
                 <div class="search-bar">
                     <label for="search-field">O que você procura nos arquivos?</label>
                     <div class="input-container">
-                        <input type="text" id="search-field" placeholder="Ex: fireball...">
-                        <button id="btn-search">Buscar</button>
+                        <input type="text" id="search-field" placeholder="Ex: wizard...">
+                        <button id="btn-search" class="color-classes">Buscar</button>
                     </div>
                 </div>
 
@@ -77,23 +80,29 @@
 
         <section class="contact" id="contato">
             <h2>Mande um recado ao DM</h2>
-            <p>Preencha o pergaminho para enviá-lo ao Mestre:</p>
 
-            <form class="form">
-                <div class="form-fields">
-                    <label for="name">Nome do Aventureiro</label>
-                    <input type="text" id="name" placeholder="Como você quer ser chamado...">
+            <div class="contact-container">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut esse beatae possimus molestias? Laboriosam fuga provident sapiente tenetur eum delectus corporis, eveniet eaque possimus at amet illo ut, sint iste.</p>
+                <div class="form-container">
+                    <p>Preencha o pergaminho para enviá-lo ao Mestre:</p>
+
+                    <form class="form">
+                        <div class="form-fields">
+                            <label for="name">Nome do Aventureiro</label>
+                            <input type="text" id="name" placeholder="Como você quer ser chamado...">
+                        </div>
+                        <div class="form-fields">
+                            <label for="email">Correio Mágico (E-mail)</label>
+                            <input type="email" id="email" placeholder="Seu e-mail...">
+                        </div>
+                        <div class="form-fields">
+                            <label for="message">Sua Mensagem</label>
+                            <textarea id="message" rows="4" placeholder="Conte-nos sua experiência com RPG..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Enviar Pergaminho</button>
+                    </form>
                 </div>
-                <div class="form-fields">
-                    <label for="email">Correio Mágico (E-mail)</label>
-                    <input type="email" id="email" placeholder="Seu e-mail...">
-                </div>
-                <div class="form-fields">
-                    <label for="message">Sua Mensagem</label>
-                    <textarea id="message" rows="4" placeholder="Conte-nos sua experiência com RPG..."></textarea>
-                </div>
-                <button type="submit" class="btn-submit">Enviar Pergaminho</button>
-            </form>
+            </div>
         </section>
     </main>
 

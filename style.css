@@ -56,21 +56,25 @@ header a {
     overflow: visible;
     /* Permite que o losango "vaze" para fora da linha se for maior que 2px */
 }
+        /* background: linear-gradient(135deg, #2c1b4d 0%, #140c24 100%); */
 
 /* --- HERO SECTION --- */
 .hero {
-    background: linear-gradient(135deg, #2c1b4d 0%, #140c24 100%);
+    /* Mantive o background escuro para destacar o brilho */
+    /* background: linear-gradient(135deg, #2c1b4d 0%, #140c24 100%); */
     padding: 80px 10%;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    /* 1fr 1fr é mais flexível que 50% 50%, dividindo o espaço restante igualmente */
+    grid-template-columns: 1fr 1fr;
     align-items: center;
-    justify-content: space-between;
+    gap: 40px;
+    /* Garante que a imagem não cole no texto */
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    min-height: 75vh;
+    /* Faz a seção ocupar pelo menos 75% da altura da tela */
 }
 
 .hero-content {
-    flex: 1;
-    max-width: 50%;
     text-align: left;
 }
 
@@ -81,23 +85,57 @@ header a {
     line-height: 1.6;
 }
 
-.hero-art {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    font-size: 100px;
-    /* Temporário para o emoji da bola de cristal */
-}
-
 .hero h1 {
     font-size: 2.5rem;
     margin-bottom: 10px;
     color: #ffffff;
 }
 
-.hero p {
-    color: var(--gold);
-    margin-bottom: 30px;
+/* --- A ARTE E O EFEITO DE DESFOQUE --- */
+.hero-art {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* Necessário para posicionar o brilho de fundo */
+}
+
+/* O fundo brilhante desfocado atrás da imagem */
+.hero-art::before {
+    content: '';
+    position: absolute;
+    width: 125%;
+    height: 125%;
+    /* Cria uma "bola" de luz dourada que some nas bordas */
+    background: radial-gradient(circle, rgba(206, 205, 205, 0.2) 0%, transparent 70%);
+    filter: blur(50px);
+    /* Aplica o desfoque pesado na luz */
+    z-index: 0;
+    /* Coloca a luz para trás */
+}
+
+.placeholder-imagem img {
+    /* A imagem agora ocupa 100% da sua coluna, que é metade da tela */
+    width: 100%;
+    /* max-width: 1500px; */
+    /* Limite para não estourar em monitores ultrawide */
+    height: auto;
+    position: relative;
+    z-index: 1;
+    /* Garante que a imagem fique na frente da luz */
+
+    /* Outra opção de brilho: A sombra projetada (Drop Shadow) contornando a imagem */
+    filter: drop-shadow(0px 10px 25px rgba(0, 0, 0, 0.5));
+    transform: scale(1.25);
+    /* Um mimo extra para dar vida à arte */
+    animation: flutuar 4s ease-in-out infinite;
+
+}
+
+.placeholder-imagem {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .btn-hero {
@@ -106,7 +144,7 @@ header a {
     color: white;
     font-size: 1.2rem;
     font-weight: bold;
-    border: 2px solid #8a2015;
+    border: none;
     border-radius: 8px;
     padding: 16px 32px;
     cursor: pointer;
@@ -125,6 +163,8 @@ header a {
     padding: 60px 24px;
     text-align: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    margin: 0 24px;
 }
 
 .characters h2 {
@@ -134,7 +174,7 @@ header a {
 /* --- SEARCH SECTION --- */
 .search {
     padding: 60px 0;
-    background: linear-gradient(135deg, #0f2e20 0%, #06140e 100%);
+    /* background: linear-gradient(135deg, #0f2e20 0%, #06140e 100%); */
     /* Verde místico */
     text-align: center;
 }
@@ -171,28 +211,36 @@ header a {
     text-align: left;
     /* Texto alinhado à esquerda na aba fica mais elegante */
     transition: all 0.3s ease;
-    opacity: 0.7;
+    /* opacity: 0.7; */
     /* Opacos quando não ativos */
+}
+
+.transparent {
+    background-color: transparent;
 }
 
 /* Cores por categoria */
 .color-classes {
     background-color: #8b0000;
+    background: linear-gradient(135deg, #4a1515 0%, #220808 100%);
+    background-color: #4a1515;
 }
 
 /* Guerreiro Vermelho */
 .color-especies {
     background-color: #228b22;
+    background: linear-gradient(135deg, #0f2e20 0%, #06140e 100%);
 }
 
 /* Natureza Verde */
 .color-magias {
-    background-color: #4b0082;
+    background: linear-gradient(135deg, #2c1b4d, #140c24 100%);
 }
 
 /* Arcano Índigo */
 .color-criaturas {
     background-color: #d2691e;
+    background: linear-gradient(to right, #2c2114, #3e2e1e);
 }
 
 /* Monstro Laranja */
@@ -208,7 +256,7 @@ header a {
     /* O botão expande um pouco ao passar o mouse */
     opacity: 1;
     /* Fica com cor viva */
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    /* box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); */
 }
 
 .search-bar {
@@ -230,6 +278,8 @@ header a {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     border-radius: 6px;
     overflow: hidden;
+    border-bottom: 1px solid var(--gold);
+    border-bottom: 1px solid var(--gold);
     /* Mantém os cantos arredondados contendo os filhos */
 }
 
@@ -270,13 +320,25 @@ header a {
 
 /* --- CONTACT SECTION (FORMULÁRIO) --- */
 .contact {
-    background: linear-gradient(135deg, #4a1515 0%, #220808 100%);
+    /* background: linear-gradient(135deg, #4a1515 0%, #220808 100%); */
     /* Vermelho escuro/taverna */
     padding: 60px 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 40% 1fr;
+    
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .contact h2 {
@@ -296,6 +358,7 @@ header a {
     width: 100%;
     max-width: 450px;
     background-color: rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, #4a1515 0%, #220808 100%);
     /* Caixa de fundo translúcida */
     padding: 32px;
     border-radius: 12px;
@@ -343,6 +406,13 @@ header a {
     /* Permite aumentar apenas a altura do campo */
 }
 
+#btn-search {
+    /* background-color: #8b0000;
+    background: linear-gradient(135deg, #4a1515 0%, #220808 100%);
+    background-color: #4a1515; */
+    color: white;
+}
+
 .btn-submit {
     margin-top: 10px;
     background-color: var(--gold);
@@ -379,4 +449,15 @@ footer {
     gap: 120px;
     align-items: center;
     margin: auto;
+}
+
+.classes-card {
+    background: linear-gradient(135deg, #4a1515 0%, #220808 100%);
+    margin: 24px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    padding: 24px;
+    align-items: center;
 }
