@@ -4,7 +4,7 @@
         "nome": "Dante",
         "classe": "Bardo",
         "subclasse": "Colégio dos Espíritos",
-        "especie": "originalmente elfo, atualmente tabaxi",
+        "especie": "Elfo Astral",
         "nivel": 12,
         "atributos": {
             "força": 8,
@@ -14,7 +14,7 @@
             "sabedoria": 19,
             "carisma": 20
         },
-        "descricao": "balbalaadiahsduahuhasuh",
+        "descricao": "Um bardo fanfarrão, muito hábil da arte de persuadir e enganar, porém com uma grande aptidão para desafiar forças maiores do que ele próprio. Por conta disso, por muitas vezes entidades sobrehumanas interferiram em sua vida, o que costuma deixá-lo um tanto quanto irritado.",
         "imagem": "assets/dante.png"
     },
     {
@@ -32,7 +32,7 @@
             "sabedoria": 14,
             "carisma": 22
         },
-        "descricao": "",
+        "descricao": "Uma bruxa capaz tanto de enfeitiçar seus inimigos quanto de fazê-los serem consumidos pelas chamas. Seu patrono demoníaco, além de fornecê-la poderes mágicos, muitas vezes também a ajuda a lidar com o medo de se tornar aquilo que ela mais teme: uma pessoa sem empatia.",
         "imagem": "assets/lyra.png"
     },
     {
@@ -50,7 +50,7 @@
             "sabedoria": 12,
             "carisma": 10
         },
-        "descricao": "",
+        "descricao": "Um ser de paixões simples. Tahmun ama a natureza, cozinhar, lutar e Primórdia, a deusa da natureza. Como o fanático que é, está sempre pronto para usar seus músculos e os poderes advindos da deidade para destroçar aqueles que atentam contra as florestas.",
         "imagem": "assets/tahmun.png"
     },
     {
@@ -68,7 +68,7 @@
             "sabedoria": 10,
             "carisma": 13
         },
-        "descricao": "",
+        "descricao": "Unindo capacidades mágicas com uma técnica refinada de combate com a espada, esse mago parece dançar no campo de batalha. Entre seus companheiro é conhecido como uma pessoa fria, triste e solitária. É dito que o ambiente sempre fica um pouco mais sombria com a presença dele.",
         "imagem": "assets/trebor.png"
     },
     {
@@ -86,7 +86,7 @@
             "sabedoria": 20,
             "carisma": 7
         },
-        "descricao": "",
+        "descricao": "Um alegre clérigo que serve à deusa da loucura. Vaga pelo mundo em busca de reunificar sua fé, que sofreu um cisma já há mais de um século. Para isso ele se vale de uma devoção inabalável, bem como de caos e pouca racionalidade, como pede sua sua deusa. ",
         "imagem": "assets/ze.png"
     }
 ]

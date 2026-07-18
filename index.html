@@ -19,7 +19,7 @@
 <body>
     <header>
         <nav class="navbar">
-            <a href="#grimorio" class="dice">
+            <a href="#grimorio" class="dice header-active">
                 <img src="assets/d20.png">
                 GRIMÓRIO DE CAMPANHA
             </a>
@@ -32,8 +32,9 @@
     <main>
         <section class="hero" id="grimorio">
             <div class="hero-content">
-                <h1>Bem-vindo ao acervo do Grimório de Camapnha!</h1>
-                <p class="hero-subtitle">Preparem seus dados!</p>
+                <h1>Bem-vindo ao acervo do <span class="destaque">Grimório de Campanha!</span></h1>
+                <p class="hero-subtitle">Prepare seus dados e curta essa aventura!</p>
+                <p class="hero-subtitle">Mais abaixo, você também pode conferir alguns dos heróis que já participam da nossa campanha ou pesquisar recursos, como classes, magias e criaturas!</p>
                 <button class="btn-hero">Ingressar na Jornada</button>
             </div>
         
@@ -46,10 +47,7 @@
 
         <hr class="line">
 
-        <section class="characters" id="herois">
-            <h2>Conheça nossos heróis</h2>
-            <p>O carrossel será invocado aqui...</p>
-        </section>
+        <section class="characters" id="herois"></section>
 
         <hr class="line">
 
@@ -62,7 +60,7 @@
                     <button class="btn-option color-especies" data-endpoint="races" data-placeholder="Ex: human...">Espécies</button>
                     <button class="btn-option color-magias" data-endpoint="spells" data-placeholder="Ex: fire bolt...">Magias</button>
                     <button class="btn-option color-criaturas" data-endpoint="monsters" data-placeholder="Ex: ogre...">Criaturas</button>
-                    <button class="btn-option color-itens" data-endpoint="equipment" data-placeholder="Ex: plate armor...">Itens</button>
+                    <!-- <button class="btn-option color-itens" data-endpoint="equipment" data-placeholder="Ex: plate armor...">Itens</button> -->
                 </aside>
 
                 <div class="search-bar">
@@ -85,7 +83,7 @@
             <h2>Mande um recado ao DM</h2>
 
             <div class="contact-container">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut esse beatae possimus molestias? Laboriosam fuga provident sapiente tenetur eum delectus corporis, eveniet eaque possimus at amet illo ut, sint iste.</p>
+                <p class="explain-text">Bem-vindo ao <span class="destaque">Grimório de Campanha</span>, onde você pode pesquisar diretamente o material original de D&D e também encontrar informações sobre os personagens que fazem parte de nossa atual campanha. Caso tenha se interessado e queira criar também o seu próprio personagem, deixe nosso DM saber um pouco mais sobre você. Preencha os campos ao lado e nos conte qual a sua experiência com RPG: se você já jogou, se isso é novidade para você, qual seu sistema favorito, que tipos de campanha você prefere... Conte o que achar válido. Certamente adoraremos ouvir o seu relato!</p>
                 <div class="form-container">
                     <p>Preencha o pergaminho para enviá-lo ao Mestre:</p>
 
@@ -112,10 +110,14 @@
         <hr class="line">
 
     <footer>
-        <p>RPG Marcados - desde 2023</p>
-        <p>Todos os direitos reservados</p>
-        <p>Desenvolvido para curso de dev Full Stack +prati</p>
-        <p>Contato - GitHub</p>
+        
+        <img src="assets/d20.png">
+        <div class="footer-content">
+            <p>Grimório de Campanha - 2026</p>
+            <p>Todos os direitos reservados</p>
+            <p>Landing Page feita para o curso de dev Full Stack +prati</p>
+            <p>Desenvolvido por Vinícius Moder - <a href="https://github.com/viniciusmoder/Landing-Page---Grim-rio-de-Campanha" target="_blank">GitHub</a></p>
+        </div>
     </footer>
 
 </body>

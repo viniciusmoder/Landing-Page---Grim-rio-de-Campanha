@@ -6,6 +6,22 @@ const form = document.querySelector(".form");
 const btnHero = document.querySelector(".btn-hero");
 const contactSession = document.querySelector(".contact");
 const charactersContainer = document.querySelector(".characters");
+const navbarLink = document.querySelectorAll(".navbar a");
+
+navbarLink.forEach(link => {
+    link.addEventListener("click", () => {
+        if (link.classList.contains("header-active")) {
+            return;
+        }
+
+        navbarLink.forEach(item => {
+            item.classList.remove("header-active");
+        });
+
+        link.classList.add("header-active");
+    });
+});
+
 
 let random = [];
 let carrosselIndex = 0;
@@ -71,7 +87,8 @@ function renderCard() {
     cardDynamicContent.innerHTML = `
         <img class="char-img" src="${character.imagem}" alt="${character.nome}">
         <div class="char-info">
-            <h3 class="char-nome">${character.nome}</h3>
+            <h1 class="char-nome">${character.nome}</h1>
+            <hr class="line-name">
             <div class="char-class">
                 <p>${character.classe}</p>
                 <p>(${character.subclasse})</p>
@@ -119,7 +136,6 @@ function setupArrowEvents() {
     });
 }
 
-
 btnSearch.addEventListener("click", () => {
     let searchInput = formatInput(inputField.value);
 
@@ -148,11 +164,57 @@ function renderResultCard(responseObject, searchArea) {
         case "spells":
             renderSpells(responseObject, resultCard);
             break;
+        
+        case "monsters":
+            renderMonsters(responseObject, resultCard);
+            break;
+        
+        case "races":
+            renderSpecies(responseObject, resultCard);
+            break;
     }
 }
 
+function renderSpecies(specie, card) {
+    const name = specie.name;
+    const speed = specie.speed;
+    const desc = specie.alignment;
+    const age = specie.age;
+
+    card.innerHTML = `
+        <h1 class="result-name">${name}</h1>
+        <div class="card-info">
+            <p><strong>Deslocamento:</strong> ${speed} ft.</p>
+            <p><strong>Idade:</strong> ${age}</p>
+            <p>${desc}</p>
+        </div>
+    `;
+
+    card.className = "result-container species-card";
+}
+
+function renderMonsters(monster, card) {
+    const name = monster.name;
+    const type = monster.type;
+    const size = monster.size;
+    const hitPoints = monster.hit_points;
+    const challangeRating = monster.challenge_rating;
+    const image = monster.image;
+
+    card.innerHTML = `
+        <h1 class="result-name">${monster.name}</h1>
+        <div class="card-info">
+            <p><strong>Type:</strong> ${type}</p>
+            <p><strong>Size:</strong> ${size}</p>
+            <p><strong>Hit Points:</strong> ${hitPoints}</p>
+            <p><strong>Challange Rating:</strong> ${challangeRating}</p>
+        </div>
+    `;
+
+    card.className = "result-container monsters-card";
+}
+
 function renderSpells(spell, card) {
-    console.log("passou no swithc");
     const name = spell.name;
     const school = spell.school.name;
     const time = spell.casting_time;
@@ -162,7 +224,7 @@ function renderSpells(spell, card) {
     const desc = spell.desc;    
 
 card.innerHTML = `
-    <h1>${name}</h1>  <!-- Corrigido aqui -->
+    <h1 class="result-name">${name}</h1>
     <div class="card-info">
         <p>${school}</p>
         <p><strong>Level:</strong> ${level}</p>
@@ -170,7 +232,7 @@ card.innerHTML = `
         <p><strong>Casting Time:</strong> ${time}</p>
         <p><strong>Duration:</strong> ${duration}</p>
         <p>"${desc}"</p>
-    </div>             <!-- Fechamento da div adicionado aqui -->
+    </div>
 `;
 
     card.className = "result-container spells-card";
@@ -186,12 +248,11 @@ function renderClass(dndClass, card) {
     
 
     card.innerHTML = `
-        <h1>${name}<h1>
+        <h1 class="result-name">${name}<h1>
         <div class="card-info">
             <p><strong>Hit die:</strong> d${hitDie}</p>
             <p><strong>Saving Throws:</strong> ${save1} & ${save2}</p>
-            <p><strong>Skills</strong></p>
-            <p>${skills}</p>
+            <p><strong>Skills:</strong> ${skills}</p>
     `;
 
     card.className = "result-container classes-card";
@@ -214,33 +275,6 @@ async function request(value, area) {
         console.log(error);
     }
 }
-
-
-//     if (btn.classList.contains("active")) {
-
-//         if (btn.classList.contains("color-classes")) {
-//             searchContainer.classList.add("color-classes");
-//         }
-
-//         if (btn.classList.contains("color-especies")) {
-//             searchContainer.classList.add("color-especies");
-//         }
-
-//         if (btn.classList.contains("color-magias")) {
-//             searchContainer.classList.add("color-magias");
-//             btn.classList.toggle("color-magias");
-//             btn.classList.toggle("transparent");
-//         }
-        
-//         if (btn.classList.contains("color-criaturas")) {
-//             searchContainer.classList.add("color-criaturas");
-//         }
-
-//         if (btn.classList.contains("color-itens")) {
-//             searchContainer.classList.add("color-itens");
-//         }        
-//     }
-// });
 
 searchButtons.forEach(btn => {
     btn.addEventListener("click", (event) => {
@@ -274,7 +308,10 @@ form.addEventListener("submit", event => {
 
     const userName = document.querySelector("#name").value;
 
-    alert(`Obrigado por preencher este formulário, ${userName}`);
+    form.innerHTML += `
+        <p>Sua mensagem foi enviada, ${userName}.<br>
+        Obrigado por preencher este formulário!</p> 
+    `;
 
     form.reset();
 });
