@@ -11,7 +11,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet">
-
+    <link rel="icon" type="image/x-icon" href="assets/d20.png">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
@@ -19,7 +19,10 @@
 <body>
     <header>
         <nav class="navbar">
-            <a href="#grimorio">GRIMÓRIO DE CAMPANHA</a>
+            <a href="#grimorio" class="dice">
+                <img src="assets/d20.png">
+                GRIMÓRIO DE CAMPANHA
+            </a>
             <a href="#herois">HERÓIS</a>
             <a href="#pesquisa">PESQUISA</a>
             <a href="#contato">CONTATO</a>
@@ -29,7 +32,7 @@
     <main>
         <section class="hero" id="grimorio">
             <div class="hero-content">
-                <h1>Bem-vindo ao acervo de pesquisa dos Marcados!</h1>
+                <h1>Bem-vindo ao acervo do Grimório de Camapnha!</h1>
                 <p class="hero-subtitle">Preparem seus dados!</p>
                 <button class="btn-hero">Ingressar na Jornada</button>
             </div>
@@ -89,15 +92,15 @@
                     <form class="form">
                         <div class="form-fields">
                             <label for="name">Nome do Aventureiro</label>
-                            <input type="text" id="name" placeholder="Como você quer ser chamado...">
+                            <input type="text" id="name" placeholder="Como você quer ser chamado..." required>
                         </div>
                         <div class="form-fields">
                             <label for="email">Correio Mágico (E-mail)</label>
-                            <input type="email" id="email" placeholder="Seu e-mail...">
+                            <input type="email" id="email" placeholder="Seu e-mail..." required>
                         </div>
                         <div class="form-fields">
                             <label for="message">Sua Mensagem</label>
-                            <textarea id="message" rows="4" placeholder="Conte-nos sua experiência com RPG..."></textarea>
+                            <textarea id="message" rows="4" placeholder="Conte-nos sua experiência com RPG..." required></textarea>
                         </div>
                         <button type="submit" class="btn-submit">Enviar Pergaminho</button>
                     </form>

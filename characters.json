@@ -1,0 +1,92 @@
+[
+    {
+        "id": 1,
+        "nome": "Dante",
+        "classe": "Bardo",
+        "subclasse": "Colégio dos Espíritos",
+        "especie": "originalmente elfo, atualmente tabaxi",
+        "nivel": 12,
+        "atributos": {
+            "força": 8,
+            "destreza": 12,
+            "constituicao": 16,
+            "inteligencia": 17,
+            "sabedoria": 19,
+            "carisma": 20
+        },
+        "descricao": "balbalaadiahsduahuhasuh",
+        "imagem": "assets/dante.png"
+    },
+    {
+        "id": 2,
+        "nome": "Lyra",
+        "classe": "Bruxa",
+        "subclasse": "Patrono Infernal",
+        "especie": "Elfa (Eladrin)",
+        "nivel": 12,
+        "atributos": {
+            "força": 8,
+            "destreza": 16,
+            "constituicao": 14,
+            "inteligencia": 11,
+            "sabedoria": 14,
+            "carisma": 22
+        },
+        "descricao": "",
+        "imagem": "assets/lyra.png"
+    },
+    {
+        "id": 3,
+        "nome": "Tahmun",
+        "classe": "Bárbaro",
+        "subclasse": "Caminho do Fanático",
+        "especie": "Draconato (Bronze)",
+        "nivel": 12,
+        "atributos": {
+            "força": 20,
+            "destreza": 14,
+            "constituicao": 20,
+            "inteligencia": 8,
+            "sabedoria": 12,
+            "carisma": 10
+        },
+        "descricao": "",
+        "imagem": "assets/tahmun.png"
+    },
+    {
+        "id": 4,
+        "nome": "Trebor",
+        "classe": "Mago",
+        "subclasse": "Bladesinger",
+        "especie": "Meio-Elfo",
+        "nivel": 12,
+        "atributos": {
+            "força": 8,
+            "destreza": 20,
+            "constituicao": 16,
+            "inteligencia": 20,
+            "sabedoria": 10,
+            "carisma": 13
+        },
+        "descricao": "",
+        "imagem": "assets/trebor.png"
+    },
+    {
+        "id": 5,
+        "nome": "Zé Martelo",
+        "classe": "Clérigo",
+        "subclasse": "Domínio da Forja",
+        "especie": "Anão da Colina",
+        "nivel": 12,
+        "atributos": {
+            "força": 16,
+            "destreza": 13,
+            "constituicao": 16,
+            "inteligencia": 7,
+            "sabedoria": 20,
+            "carisma": 7
+        },
+        "descricao": "",
+        "imagem": "assets/ze.png"
+    }
+]
