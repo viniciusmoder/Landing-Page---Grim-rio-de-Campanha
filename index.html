@@ -20,7 +20,7 @@
     <header>
         <nav class="navbar">
             <a href="#grimorio" class="dice header-active">
-                <img src="assets/d20.png">
+                <img src="assets/d20.png" alt="D20">
                 GRIMÓRIO DE CAMPANHA
             </a>
             <a href="#herois">HERÓIS</a>
@@ -40,7 +40,7 @@
         
             <div class="hero-art">
                 <div class="placeholder-imagem">
-                    <img src="assets/hero.png" alt="Mascotes dos Marcados">
+                    <img src="assets/hero.png" alt="Monstros bebês">
                 </div>
             </div>
         </section>
@@ -52,7 +52,7 @@
         <hr class="line">
 
         <section class="search" id="pesquisa">
-            <h2>Consulte os pergaminhos</h2>
+            <h2>Consulte o Grimório</h2>
 
             <div class="search-area">
                 <aside class="search-option">
@@ -60,15 +60,16 @@
                     <button class="btn-option color-especies" data-endpoint="races" data-placeholder="Ex: human...">Espécies</button>
                     <button class="btn-option color-magias" data-endpoint="spells" data-placeholder="Ex: fire bolt...">Magias</button>
                     <button class="btn-option color-criaturas" data-endpoint="monsters" data-placeholder="Ex: ogre...">Criaturas</button>
-                    <!-- <button class="btn-option color-itens" data-endpoint="equipment" data-placeholder="Ex: plate armor...">Itens</button> -->
                 </aside>
 
                 <div class="search-bar">
-                    <label for="search-field">O que você procura nos arquivos?</label>
+                    <label for="search-field">*pesquise os termos apenas em inglês (limitação da API)</label>
                     <div class="input-container">
                         <input type="text" id="search-field" placeholder="Ex: wizard...">
                         <button id="btn-search" class="color-classes">Buscar</button>
                     </div>
+
+                    <p style="color:red" class="error-message"></p>
                 </div>
 
                 <div class="grid-spacer"></div>
@@ -111,9 +112,9 @@
 
     <footer>
         
-        <img src="assets/d20.png">
+        <img src="assets/d20.png" alt="D20">
         <div class="footer-content">
-            <p>Grimório de Campanha - &copy2026</p>
+            <p>Grimório de Campanha - &copy; 2026</p>
             <p>Todos os direitos reservados</p>
             <p>Landing Page feita para o curso de dev Full Stack +prati</p>
             <p>Desenvolvido por Vinícius Moder - <a href="https://github.com/viniciusmoder/Landing-Page---Grim-rio-de-Campanha" target="_blank">GitHub</a></p>

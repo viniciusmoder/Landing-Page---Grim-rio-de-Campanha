@@ -1,4 +1,4 @@
-const searchContainer = document.querySelector(".search");
+//Elementos capturados
 const searchButtons = document.querySelectorAll(".btn-option");
 const btnSearch = document.querySelector("#btn-search");
 const inputField = document.querySelector("#search-field");
@@ -7,7 +7,23 @@ const btnHero = document.querySelector(".btn-hero");
 const contactSession = document.querySelector(".contact");
 const charactersContainer = document.querySelector(".characters");
 const navbarLink = document.querySelectorAll(".navbar a");
+const errorMessage = document.querySelector(".error-message");
 
+//Necessário para o carrossel
+let randomList = [];
+let carrosselIndex = 0;
+
+//Constantes da API
+const api = `https://www.dnd5eapi.co/api/2014/`;
+const languageSupport = "?lang=pt-BR";
+
+//////GERAL///////
+//Faz com que a tela deslize de forma suave
+btnHero.addEventListener("click", () => {
+    contactSession.scrollIntoView({ behavior: "smooth" });
+});
+
+//Comportamento do Header
 navbarLink.forEach(link => {
     link.addEventListener("click", () => {
         if (link.classList.contains("header-active")) {
@@ -23,12 +39,11 @@ navbarLink.forEach(link => {
 });
 
 
-let random = [];
-let carrosselIndex = 0;
+/////////HERO/////////////
 
-const api = `https://www.dnd5eapi.co/api/2014/`;
-const languageSupport = "?lang=pt-BR";
 
+////////PERSONAGENS/////////
+//Aleatoriza o array de personagens
 function randomCards(arr) { 
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -37,36 +52,28 @@ function randomCards(arr) {
   return arr;
 }
 
-btnHero.addEventListener("click", () => {
-    contactSession.scrollIntoView({ behavior: "smooth" });
-});
-
+//Busca as informações dos personagens no arquivo json e chama as funções necessárias
 async function getCharacters() {
     try {
         const charactersResponse = await fetch("characters.json");
         const charactersList = await charactersResponse.json();
 
-        // Embaralha a lista vinda do JSON toda vez que a página recarrega
         randomList = randomCards(charactersList);
         carrosselIndex = 0;
 
-        // Monta a estrutura estática do carrossel (Botões e casca do card)
-        renderCarrosselStructure();
-        
-        // Exibe o primeiro personagem da lista aleatória
+        renderCarrosselContainer();
         renderCard();
-        
-        // Ativa os ouvintes de clique nas setas
         setupArrowEvents();
     }
+
     catch (error) {
         console.error('Erro ao ler o JSON ou desenhar os cards:', error);
         charactersContainer.innerHTML = '<p>Erro ao carregar o conteúdo do carrossel.</p>';
     }
 }
 
-// Cria a estrutura base do carrossel apenas uma vez
-function renderCarrosselStructure() {
+//Renderiza o contâiner do carrossel
+function renderCarrosselContainer() {
     charactersContainer.innerHTML = `
         <button class="arrow-btn arrow-left">&lt;</button>    
         <div class="character-card">
@@ -76,14 +83,13 @@ function renderCarrosselStructure() {
     `;
 }
 
-// Atualiza especificamente o conteúdo de dentro do card
+//Renderiza o contéudo do card de personagem
 function renderCard() {
     const cardDynamicContent = document.getElementById("card-dynamic-content");
     if (!cardDynamicContent || randomList.length === 0) return;
 
     const character = randomList[carrosselIndex];
 
-    // Injeta as informações do personagem atual com as classes corrigidas
     cardDynamicContent.innerHTML = `
         <img class="char-img" src="${character.imagem}" alt="${character.nome}">
         <div class="char-info">
@@ -110,7 +116,7 @@ function renderCard() {
     `;
 }
 
-// Configura os cliques e apenas muda o index, chamando o renderCard para atualizar a tela
+//Permite ir ou voltar no carrossel, editando a posição no array de personagens
 function setupArrowEvents() {
     const leftArrow = document.querySelector('.arrow-left');
     const rightArrow = document.querySelector('.arrow-right');
@@ -136,6 +142,8 @@ function setupArrowEvents() {
     });
 }
 
+/////////PESQUISA////////////
+//Descobre qual a área de busca para completar a url da requisição
 btnSearch.addEventListener("click", () => {
     let searchInput = formatInput(inputField.value);
 
@@ -146,13 +154,14 @@ btnSearch.addEventListener("click", () => {
     request(searchInput, searchArea);
 });
 
+//Formata o texto digitado pelo usuário, para garantir que seja enviado corretamente para a API
 function formatInput(text) {
     return text.trim().replace(" ","-").toLowerCase();
 }
 
+//Recebe o retorno da API e decide qual função de render chamar
 function renderResultCard(responseObject, searchArea) {
     if (!responseObject) return;
-    console.log("entrou no método");
 
     const resultCard = document.querySelector("#result");
 
@@ -175,6 +184,7 @@ function renderResultCard(responseObject, searchArea) {
     }
 }
 
+//Render do card das espécies
 function renderSpecies(specie, card) {
     const name = specie.name;
     const speed = specie.speed;
@@ -193,12 +203,13 @@ function renderSpecies(specie, card) {
     card.className = "result-container species-card";
 }
 
+//Render do card dos monstros
 function renderMonsters(monster, card) {
     const name = monster.name;
     const type = monster.type;
     const size = monster.size;
     const hitPoints = monster.hit_points;
-    const challangeRating = monster.challenge_rating;
+    const challengeRating = monster.challenge_rating;
     const image = monster.image;
 
     card.innerHTML = `
@@ -207,13 +218,14 @@ function renderMonsters(monster, card) {
             <p><strong>Type:</strong> ${type}</p>
             <p><strong>Size:</strong> ${size}</p>
             <p><strong>Hit Points:</strong> ${hitPoints}</p>
-            <p><strong>Challange Rating:</strong> ${challangeRating}</p>
+            <p><strong>Challenge Rating:</strong> ${challengeRating}</p>
         </div>
     `;
 
     card.className = "result-container monsters-card";
 }
 
+//Render do card das magias
 function renderSpells(spell, card) {
     const name = spell.name;
     const school = spell.school.name;
@@ -223,32 +235,31 @@ function renderSpells(spell, card) {
     const duration = spell.duration;
     const desc = spell.desc;    
 
-card.innerHTML = `
-    <h1 class="result-name">${name}</h1>
-    <div class="card-info">
-        <p>${school}</p>
-        <p><strong>Level:</strong> ${level}</p>
-        <p><strong>Range:</strong> ${range}</p>
-        <p><strong>Casting Time:</strong> ${time}</p>
-        <p><strong>Duration:</strong> ${duration}</p>
-        <p class="description">"${desc}"</p>
-    </div>
-`;
+    card.innerHTML = `
+        <h1 class="result-name">${name}</h1>
+        <div class="card-info">
+            <p><strong>School:</strong>${school}</p>
+            <p><strong>Level:</strong> ${level}</p>
+            <p><strong>Range:</strong> ${range}</p>
+            <p><strong>Casting Time:</strong> ${time}</p>
+            <p><strong>Duration:</strong> ${duration}</p>
+            <p class="description">"${desc}"</p>
+        </div>
+    `;
 
     card.className = "result-container spells-card";
 }
 
+//Render do card das classes
 function renderClass(dndClass, card) {
-    console.log("passou no swithc");
     const name = dndClass.name;
     const hitDie = dndClass.hit_die;
     const save1 = dndClass.saving_throws[0].name;
     const save2 = dndClass.saving_throws[1].name;
     const skills = dndClass.proficiency_choices[0].desc;
-    
 
     card.innerHTML = `
-        <h1 class="result-name">${name}<h1>
+        <h1 class="result-name">${name}</h1>
         <div class="card-info">
             <p><strong>Hit die:</strong> d${hitDie}</p>
             <p><strong>Saving Throws:</strong> ${save1} & ${save2}</p>
@@ -258,31 +269,35 @@ function renderClass(dndClass, card) {
     card.className = "result-container classes-card";
 }
 
+//Faz a requisição
 async function request(value, area) {
     try {
+        errorMessage.textContent = "";
+        
         const response = await fetch(`${api}${area}/${value}${languageSupport}`);
 
-        if(!response.ok) throw new Error("Erro na resposta: ", response.status);
+        if(!response.ok) {
+            errorMessage.textContent = `Não foi possível encontrar nenhum resultado equivalente ao texto digitado. Por favor, tente novamente.`;
+            return;            
+        }
 
-        console.log(`${api}${area}/${value}${languageSupport}`);
         const responseObject = await response.json();
-        console.log("Rebecido: ", responseObject);
 
-        renderResultCard(responseObject, area);
-        
+        renderResultCard(responseObject, area);        
     }
     catch (error) {
         console.log(error);
     }
 }
 
+//Faz com que a cor do botão de busca seja a mesma do botão de pesquisa atualmente selecionado
 searchButtons.forEach(btn => {
     btn.addEventListener("click", (event) => {
         const btnActive = event.currentTarget;
 
         searchButtons.forEach(btn => {
             btn.classList.remove("active");
-            const colorClass = btn.classList[1]; // Exemplo de captura de classe
+            const colorClass = btn.classList[1];
 
             if (colorClass) {
                 btnSearch.classList.remove(colorClass);
@@ -303,6 +318,8 @@ searchButtons.forEach(btn => {
     });
 });
 
+////////////FORM////////////
+//Evento para simular o envio do formulário
 form.addEventListener("submit", event => {
     event.preventDefault();
 
@@ -316,4 +333,6 @@ form.addEventListener("submit", event => {
     form.reset();
 });
 
+
+//Inicializa os cards dos personagens na tela
 getCharacters();
