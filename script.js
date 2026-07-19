@@ -276,7 +276,7 @@ async function request(value, area) {
         
         const response = await fetch(`${api}${area}/${value}${languageSupport}`);
 
-        if(!response.ok) {
+        if(!response.ok || !inputField.value) {
             errorMessage.textContent = `Não foi possível encontrar nenhum resultado equivalente ao texto digitado. Por favor, tente novamente.`;
             return;            
         }

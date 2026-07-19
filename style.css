@@ -101,7 +101,6 @@ header img {
     grid-template-columns: 1fr 1fr;
     align-items: center;
     gap: 40px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     min-height: 75vh;
 }
 
