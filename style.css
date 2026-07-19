@@ -560,8 +560,8 @@ footer a {
     display: flex;
     flex-direction: column;
     color: white;
-    padding: 24px;
     align-items: center;
+    padding: 48px;
 }
 
 .spells-card {
@@ -571,8 +571,8 @@ footer a {
     display: flex;
     flex-direction: column;
     color: white;
-    padding: 24px;
     align-items: center;
+    padding: 48px;
 }
 
 .monsters-card {
@@ -582,8 +582,8 @@ footer a {
     display: flex;
     flex-direction: column;
     color: white;
-    padding: 24px;
     align-items: center;
+    padding: 48px;
 }
 
 .species-card {
@@ -593,8 +593,8 @@ footer a {
     display: flex;
     flex-direction: column;
     color: white;
-    padding: 24px;
     align-items: center;
+    padding: 0 80px;
 }
 
 .arrow-btn {
@@ -671,6 +671,7 @@ footer a {
     /* Evita que o texto encoste nas bordas */
     margin-top: 10px;
     color: #e0e0e0;
+    font-style: italic;
 }
 
 .char-class {
@@ -702,6 +703,7 @@ footer a {
 }
 
 .explain-text {
-    text-align: justify;
+    text-align: center;
     font-size: 25px;
+    text-indent: 30px;
 }

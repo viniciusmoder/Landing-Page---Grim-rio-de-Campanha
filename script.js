@@ -231,7 +231,7 @@ card.innerHTML = `
         <p><strong>Range:</strong> ${range}</p>
         <p><strong>Casting Time:</strong> ${time}</p>
         <p><strong>Duration:</strong> ${duration}</p>
-        <p>"${desc}"</p>
+        <p class="description">"${desc}"</p>
     </div>
 `;
 
